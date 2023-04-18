@@ -45,7 +45,6 @@ jobs:
           set +e
           dotnet format --verify-no-changes --severity info 2>&1 | tee dotnet-format.txt
           exitcode=$?
-          echo EXITCODE = $exitcode
           if [ $exitcode -ne 0 ]; then
             echo '# `dotnet-format` failure' >> $GITHUB_STEP_SUMMARY
             echo '```'  >> $GITHUB_STEP_SUMMARY
