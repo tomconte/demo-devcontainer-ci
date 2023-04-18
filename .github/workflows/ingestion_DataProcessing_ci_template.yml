@@ -28,8 +28,6 @@ jobs:
 
     - uses: actions/checkout@v3
 
-    - run: mkdir -p $HOME/.ssh
-
     - name: Run .NET format/build/test
       uses: devcontainers/ci@v0.3
       with:
