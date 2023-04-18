@@ -9,10 +9,12 @@ on:
     branches: [ "main" ]
     paths:
     - 'src/ingestion/DataProcessing/src/**'
+    - '.devcontainer/**'
   pull_request:
     branches: [ "main" ]
     paths:
     - 'src/ingestion/DataProcessing/src/**'
+    - '.devcontainer/**'
 
 jobs: 
   build:
