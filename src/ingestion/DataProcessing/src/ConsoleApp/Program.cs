@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+// Increase this number to test: 1
+
 using ConsoleApp.MyNamespace;
 
 Console.WriteLine("Hello, World!");
