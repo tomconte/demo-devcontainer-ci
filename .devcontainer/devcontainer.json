@@ -1,0 +1,53 @@
+{
+    "name": "dotnet",
+    "build": {
+      "dockerfile": "Dockerfile",
+      // Update 'VARIANT' to pick a dotnet version
+      // Append -bullseye or -buster to pin to an OS version.
+      // Use -bullseye variants on local on arm64/Apple Silicon.
+      "args": {
+        "VARIANT": "6.0-bullseye"
+      }
+    },
+  
+    // Set *default* container specific settings.json values on container create.
+  
+    // Add the IDs of extensions you want installed when the container is created.
+    "customizations":{
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "ms-vscode.vscode-node-azure-pack",
+                "esbenp.prettier-vscode",
+                "ms-azuretools.vscode-azurefunctions",
+                "IronGeek.vscode-env",
+                "ms-azuretools.vscode-bicep",
+                "davidanson.vscode-markdownlint",
+                "ms-azuretools.vscode-docker",
+                "github.vscode-pull-request-github",
+                "editorconfig.editorconfig"
+              ]
+        }
+    },
+  
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+  
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "yarn install",
+  
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode",
+  
+    "mounts": [
+      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind"
+    ],
+
+    "features": {
+      "ghcr.io/devcontainers/features/azure-cli:1": {
+        "version": "latest"
+      }
+    }
+  }
+  
