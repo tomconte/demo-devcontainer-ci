@@ -7,6 +7,6 @@ public class UnitTest1
     [Fact]
     public void Test1()
     {
-	Assert.Equal(84, MyClass.TimesTwo(42));
+        Assert.Equal(84, MyClass.TimesTwo(42));
     }
 }
