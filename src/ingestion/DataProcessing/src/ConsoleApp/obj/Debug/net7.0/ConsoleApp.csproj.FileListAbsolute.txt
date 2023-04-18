@@ -1,0 +1,15 @@
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/bin/Debug/net7.0/ConsoleApp
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/bin/Debug/net7.0/ConsoleApp.deps.json
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/bin/Debug/net7.0/ConsoleApp.runtimeconfig.json
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/bin/Debug/net7.0/ConsoleApp.dll
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/bin/Debug/net7.0/ConsoleApp.pdb
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.csproj.AssemblyReference.cache
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.AssemblyInfoInputs.cache
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.AssemblyInfo.cs
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.csproj.CoreCompileInputs.cache
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.dll
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/refint/ConsoleApp.dll
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.pdb
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ConsoleApp.genruntimeconfig.cache
+/Users/tconte/src/CSE/demo-devcontainer-ci/src/ingestion/DataProcessing/src/ConsoleApp/obj/Debug/net7.0/ref/ConsoleApp.dll
