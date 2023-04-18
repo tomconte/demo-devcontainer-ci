@@ -1,0 +1,82 @@
+opyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+name: Ingestion DataProcessing CI template
+
+on:
+  workflow_call:
+
+jobs: 
+  build:
+    defaults:
+      run:
+        shell: bash
+
+    runs-on: ubuntu-latest
+
+    env:
+      SOURCE_PATH: ./src/ingestion/DataProcessing/src
+
+    steps:
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2 
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/checkout@v3
+
+    - run: mkdir -p $HOME/.ssh
+
+    - name: Run .NET format/build/test
+      uses: devcontainers/ci@v0.3
+      with:
+        imageName: ghcr.io/${{ github.repository_owner }}/apa-dotnet-devcontainer
+        env: |
+          SOURCE_PATH
+        runCmd: |
+          cd $SOURCE_PATH
+
+          dotnet --version
+
+          dotnet restore
+
+          set +e
+          dotnet format --verify-no-changes --severity info 2>&1 | tee dotnet-format.txt
+          exitcode=$?
+          if [ $exitcode -ne 0 ]; then
+            echo '# `dotnet-format` failure' >> $GITHUB_STEP_SUMMARY
+            echo '```'  >> $GITHUB_STEP_SUMMARY
+            cat dotnet-format.txt >> $GITHUB_STEP_SUMMARY
+            echo '```'  >> $GITHUB_STEP_SUMMARY
+            exit $exitcode
+          fi
+          set -e
+
+          dotnet build --no-restore -warnaserror
+
+          dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory coverage
+
+    - name: Copy coverage.cobertura.xml
+      run: cp $SOURCE_PATH/coverage/*/coverage.cobertura.xml $SOURCE_PATH/coverage/coverage.cobertura.xml    
+
+    - name: Generate Coverage Report as Markdown
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: ${{ env.SOURCE_PATH }}/coverage/coverage.cobertura.xml
+        badge: true
+        format: 'markdown'
+        output: 'both'
+
+    - name: Add Coverage Report to PR
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: github.event_name == 'pull_request'
+      with:
+        recreate: true
+        path: code-coverage-results.md
+
+    - name: Add Coverage Report to Job Summary
+      run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+

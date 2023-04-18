@@ -1,0 +1,19 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+name: Ingestion DataProcessing CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+    - 'src/ingestion/DataProcessing/src/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+    - 'src/ingestion/DataProcessing/src/**'
+
+jobs: 
+  build:
+    uses: ./.github/workflows/ingestion_DataProcessing_ci_template.yml
