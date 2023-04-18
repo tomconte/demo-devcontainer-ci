@@ -35,6 +35,7 @@ jobs:
         env: |
           SOURCE_PATH
         runCmd: |
+          set -o pipefail
           cd $SOURCE_PATH
 
           dotnet --version
