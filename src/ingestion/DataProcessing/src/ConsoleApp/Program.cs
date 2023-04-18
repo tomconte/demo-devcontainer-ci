@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-// Increase this number to test: 1
+// Increase this number to test: 2
 
 using ConsoleApp.MyNamespace;
 
