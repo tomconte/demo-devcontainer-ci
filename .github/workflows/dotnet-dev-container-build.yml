@@ -52,16 +52,21 @@ jobs:
 
           dotnet restore
 
+          # Ignore errors temporarily to handle donet format exit code
           set +e
+
           dotnet format --verify-no-changes --severity info 2>&1 | tee dotnet-format.txt
+
           exitcode=$?
           if [ $exitcode -ne 0 ]; then
-            echo '# `dotnet-format` failure' >> $GITHUB_STEP_SUMMARY
-            echo '```'  >> $GITHUB_STEP_SUMMARY
-            cat dotnet-format.txt >> $GITHUB_STEP_SUMMARY
-            echo '```'  >> $GITHUB_STEP_SUMMARY
+            printf "%s\n" '# `dotnet-format` failure' \
+            '```' \
+            "$(cat dotnet-format.txt)" \
+            '```' >> $GITHUB_STEP_SUMMARY
             exit $exitcode
           fi
+
+          # Re-enable errors
           set -e
 
           dotnet build --no-restore -warnaserror
