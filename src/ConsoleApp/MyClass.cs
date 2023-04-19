@@ -4,6 +4,6 @@ public class MyClass
 {
     public static int TimesTwo(int i)
     {
-        return i * 4;
+        return i * 2;
     }
 }
