@@ -66,4 +66,3 @@ jobs:
 
     - name: Add Coverage Report to Job Summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
-ß
