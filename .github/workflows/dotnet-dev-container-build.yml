@@ -41,7 +41,7 @@ jobs:
     - name: Run .NET format/build/test
       uses: devcontainers/ci@v0.3
       with:
-        imageName: ghcr.io/${{ github.repository_owner }}/build-dotnet-devcontainer
+        imageName: ghcr.io/${{ github.repository_owner }}/dotnet-devcontainer
         env: |
           SOURCE_PATH
         runCmd: bash ./scripts/build-dotnet.sh
@@ -66,3 +66,4 @@ jobs:
 
     - name: Add Coverage Report to Job Summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+ß
