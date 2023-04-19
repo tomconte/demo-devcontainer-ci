@@ -44,34 +44,7 @@ jobs:
         imageName: ghcr.io/${{ github.repository_owner }}/apa-dotnet-devcontainer
         env: |
           SOURCE_PATH
-        runCmd: |
-          set -o pipefail
-          cd $SOURCE_PATH
-
-          dotnet --version
-
-          dotnet restore
-
-          # Ignore errors temporarily to handle donet format exit code
-          set +e
-
-          dotnet format --verify-no-changes --severity info 2>&1 | tee dotnet-format.txt
-
-          exitcode=$?
-          if [ $exitcode -ne 0 ]; then
-            printf "%s\n" '# `dotnet-format` failure' \
-            '```' \
-            "$(cat dotnet-format.txt)" \
-            '```' >> $GITHUB_STEP_SUMMARY
-            exit $exitcode
-          fi
-
-          # Re-enable errors
-          set -e
-
-          dotnet build --no-restore -warnaserror
-
-          dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory coverage
+        runCmd: bash ./scripts/build-dotnet.sh
 
     - name: Copy coverage.cobertura.xml
       run: cp $SOURCE_PATH/coverage/*/coverage.cobertura.xml $SOURCE_PATH/coverage/coverage.cobertura.xml    
@@ -93,4 +66,3 @@ jobs:
 
     - name: Add Coverage Report to Job Summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
-
